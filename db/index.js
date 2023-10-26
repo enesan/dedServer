@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 
 
 sequelize = new Sequelize(
-    'new_test',
+    'deadtests',
     'root',
     'root',
     {
@@ -31,11 +31,12 @@ db.tests.hasMany(db.results, {onDelete: "cascade"})
 db.users.hasMany(db.results, {onDelete: "cascade"})
 
 
-sequelize.sync({force:true}).then(()=>{
+sequelize.sync().then(()=>{
     console.log("Tables have been created");
 }).catch(err=>console.log(err));
 
 
 module.exports = {
-    sequelize: sequelize
+    sequelize: sequelize,
+    db: db
 }

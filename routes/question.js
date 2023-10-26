@@ -1,5 +1,5 @@
 const express = require('express')
-const controller = require("../controllers/question")
+const controller = require("../controllers/question.controller")
 const router = express.Router()
 
 router.post("/overview", controller.create)
