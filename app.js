@@ -1,13 +1,11 @@
 const express = require('express')
 const mysql = require('mysql2')
+const Sequelize = require('sequelize')
 const cors = require('cors')
 const morgan = require('morgan')
 
 const authRoutes = require('./routes/auth')
-const analyticRoutes = require('./routes/analytics')
-const categoryRoutes = require('./routes/category')
-const orderRoutes = require('./routes/order')
-const positionRoutes = require('./routes/position')
+const analyticRoutes = require('./routes/question')
 
 const app = express()
 
@@ -15,23 +13,27 @@ const baseUrl = '/api'
 
 app.use(`${baseUrl}/auth`, authRoutes)
 app.use(`${baseUrl}/analytics`, analyticRoutes)
-app.use(`${baseUrl}/category`, categoryRoutes)
-app.use(`${baseUrl}/order`, orderRoutes)
-app.use(`${baseUrl}/position`, positionRoutes)
 
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "deadtests",
-    password: "root"
-})
+sequelize = new Sequelize(
+    'deadtests',
+    'root',
+    'root',
+    {
+        host: 'localhost',
+        dialect: 'mysql',
+        port: 3306,
+        define: {
+            timestamps: false
+        }
+    }
+);
 
 
 
-
-module.exports = app
+module.exports = app;
+module.exports.sequelize = sequelize;

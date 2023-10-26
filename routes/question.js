@@ -1,5 +1,5 @@
 const express = require('express')
-const controller = require("../controllers/analytics")
+const controller = require("../controllers/question")
 const router = express.Router()
 
 router.get("/overview", controller.overview)
