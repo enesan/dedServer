@@ -2,8 +2,8 @@ const express = require('express')
 const controller = require("../controllers/question")
 const router = express.Router()
 
-router.get("/overview", controller.overview)
-router.get("/", controller.analytics)
+router.post("/overview", controller.create)
+router.get("/", controller.getAll)
 
 
 

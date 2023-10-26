@@ -3,35 +3,24 @@ const mysql = require('mysql2')
 const Sequelize = require('sequelize')
 const cors = require('cors')
 const morgan = require('morgan')
+const db = require('./db')
 
 const authRoutes = require('./routes/auth')
-const analyticRoutes = require('./routes/question')
+const questionRoutes = require('./routes/question')
+const {answers} = require("./db");
 
 const app = express()
 
 const baseUrl = '/api'
 
 app.use(`${baseUrl}/auth`, authRoutes)
-app.use(`${baseUrl}/analytics`, analyticRoutes)
+app.use(`${baseUrl}/question`, questionRoutes)
 
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-sequelize = new Sequelize(
-    'deadtests',
-    'root',
-    'root',
-    {
-        host: 'localhost',
-        dialect: 'mysql',
-        port: 3306,
-        define: {
-            timestamps: false
-        }
-    }
-);
 
 
 
