@@ -28,12 +28,8 @@ db.users = require('../models/user.model')(sequelize)
 db.questions.hasMany(db.answers, {onDelete: "cascade"})
 db.tests.hasMany(db.questions, {onDelete: "cascade"})
 db.tests.hasMany(db.results, {onDelete: "cascade"})
-db.users.hasMany(db.results, {onDelete: "cascade"})
+db.users.hasMany(db.tests, {onDelete: "set null"})
 
-
-sequelize.sync().then(()=>{
-    console.log("Tables have been created");
-}).catch(err=>console.log(err));
 
 
 module.exports = {

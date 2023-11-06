@@ -1,46 +1,29 @@
 const Sequelize = require('sequelize')
 
+let question = {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
+    },
+    text: {
+        type: Sequelize.STRING
+    },
+    paragraph: {
+        type: Sequelize.INTEGER
+    }
+};
 
 module.exports = function (sequelize) {
-   return sequelize.define("question", {
-            id: {
-                type: Sequelize.UUID,
-                primaryKey: true,
-                allowNull: false
-            },
-            text: {
-                type: Sequelize.STRING
-            },
-            paragraph: {
-                type: Sequelize.INTEGER
-            }
-        },
+   return sequelize.define("questions", question,
         {
             tableName: "questions"
         }
     );
 }
 
-// export class Question extends Model {
-// }
-//
-// Question.init({
-//         id: {
-//             type: Sequelize.UUID,
-//             primaryKey: true,
-//             allowNull: false
-//         },
-//         text: {
-//             type: Sequelize.STRING
-//         },
-//         paragraph: {
-//             type: Sequelize.INTEGER
-//         }
-//     },
-//     {
-//         sequelize,
-//         modelName: "question"
-//     });
+module.exports.question = question
 
 
 

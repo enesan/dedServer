@@ -1,44 +1,35 @@
+
 const Sequelize = require('sequelize')
 
 
+let answer = {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true
+    },
+    text: {
+        type: Sequelize.STRING(200)
+    },
+    is_right: {
+        type: Sequelize.BOOLEAN
+    }
+}
+
 module.exports = function (sequelize) {
-    return sequelize.define("answer", {
-            id: {
-                type: Sequelize.UUID,
-                primaryKey: true,
-                allowNull: false
-            },
-            text: {
-                type: Sequelize.STRING(200)
-            },
-            is_right: {
-                type: Sequelize.BOOLEAN
-            }
-        },
+    return sequelize.define("answers", 
+            answer,
         {
             tableName: "answers"
         })
 }
 
-// export class Answer extends Model {
-// }
-//
-// Answer.init({
-//         id: {
-//             type: Sequelize.UUID,
-//             primaryKey: true,
-//             allowNull: false
-//         },
-//         text: {
-//             type: Sequelize.STRING
-//         },
-//         is_right: {
-//             type: Sequelize.BOOLEAN
-//         }
-//     },
-//     {
-//         sequelize,
-//         modelName: "answer"
-//     })
+module.exports.answer = answer
+
+
+
+
+
 
 
