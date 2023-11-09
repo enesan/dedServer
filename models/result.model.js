@@ -17,7 +17,7 @@ let result = {
         type: Sequelize.STRING
     },
     answer_text: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
     }
 }
 

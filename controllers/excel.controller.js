@@ -18,8 +18,6 @@ module.exports.makeTest = async function (request, response) {
             debugger
             response.send("file: " + dtosBasedOnFileRows[0].text)
         })
-
-
 }
 
 

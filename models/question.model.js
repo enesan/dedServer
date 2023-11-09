@@ -16,11 +16,7 @@ let question = {
 };
 
 module.exports = function (sequelize) {
-   return sequelize.define("questions", question,
-        {
-            tableName: "questions"
-        }
-    );
+   return sequelize.define("questions", question);
 }
 
 module.exports.question = question

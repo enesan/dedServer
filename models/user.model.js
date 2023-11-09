@@ -8,6 +8,12 @@ let user = {
         autoIncrement: true,
 
     },
+    login: {
+      type:Sequelize.STRING
+    },
+    password: {
+        type:Sequelize.STRING
+    },
     name: {
         type: Sequelize.STRING
     },

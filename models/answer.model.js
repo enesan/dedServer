@@ -19,10 +19,7 @@ let answer = {
 
 module.exports = function (sequelize) {
     return sequelize.define("answers", 
-            answer,
-        {
-            tableName: "answers"
-        })
+            answer)
 }
 
 module.exports.answer = answer
