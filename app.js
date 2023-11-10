@@ -2,11 +2,11 @@
  const express = require('express')
  const mysql = require('mysql2')
  const Sequelize = require('sequelize')
- //const bodyParser = require('body-parser')
 // const cors = require('cors')
-// const morgan = require('morgan')
+ const morgan = require('morgan')
  const db = require('./db')
-//
+const dotenv = require('dotenv').config();
+
  const authRoutes = require('./routes/auth')
  const questionRoutes = require('./routes/question')
  const testRoutes = require('./routes/test')
@@ -21,12 +21,14 @@
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use(morgan('dev'))
+
  app.use(`${baseUrl}/auth`, authRoutes)
  app.use(`${baseUrl}/question`, questionRoutes)
  app.use(`${baseUrl}/test`, testRoutes)
  app.use(`${baseUrl}/excel`, excelRoutes)
 //
-// app.use(morgan('dev'))
+
 // app.use(cors())
 //
 
