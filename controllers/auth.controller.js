@@ -14,9 +14,10 @@ module.exports.login = async function (req, res) {
         const isPasswordRight = bcrypt.compare(req.body.password, user.password);
 
         if (isPasswordRight) {
+
             const token = generateToken({
                 login: user.login,
-                id: user.id
+                userId: user.id
             })
 
             res.status(200).json({
